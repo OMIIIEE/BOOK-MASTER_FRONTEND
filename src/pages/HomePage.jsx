@@ -87,7 +87,7 @@ const HomePage = () => {
     const fetchBookData = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:9003/api/auth/books/book"
+          "https://book-master-backend-new-1.onrender.com/api/auth/books/book"
         );
         const booksData = res.data.books;
         const uniqueCategories = [

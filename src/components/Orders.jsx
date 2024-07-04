@@ -20,7 +20,7 @@ const Orders = () => {
     const fetchUserData = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("http://localhost:9003/api/auth/user", {
+        const res = await axios.get("https://book-master-backend-new-1.onrender.com/api/auth/user", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUser(res.data.user);
@@ -39,7 +39,7 @@ const Orders = () => {
         const token = localStorage.getItem("token");
 
         // Fetch purchases for the current user
-        const ordersRes = await axios.get(`http://localhost:9003/api/purchases/${user._id}`, {
+        const ordersRes = await axios.get(`https://book-master-backend-new-1.onrender.com/api/purchases/${user._id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
 

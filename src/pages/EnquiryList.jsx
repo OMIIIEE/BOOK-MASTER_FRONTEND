@@ -7,7 +7,7 @@ const EnquiryList = ({ enquiries, setEnquiries }) => {
   const handleDelete = async (id) => {
     const token = localStorage.getItem("token");
     try {
-      await axios.delete(`http://localhost:9003/api/enquiry/${id}`, {
+      await axios.delete(`https://book-master-backend-new-1.onrender.com/api/enquiry/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setEnquiries(enquiries.filter((enquiry) => enquiry._id !== id));

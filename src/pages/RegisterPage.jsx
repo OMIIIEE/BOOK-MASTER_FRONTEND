@@ -168,7 +168,7 @@ const Register = () => {
     if (validateForm()) {
     try {
       // const role = email.endsWith("numetry.com") ? "admin" : "user";
-      const res = await axios.post("http://localhost:9003/api/auth/register", {
+      const res = await axios.post("https://book-master-backend-new-1.onrender.com/api/auth/register", {
         ...user,  
       });
       console.log(res);

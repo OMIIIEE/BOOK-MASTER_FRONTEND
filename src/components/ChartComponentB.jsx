@@ -11,7 +11,7 @@ const ChartComponentB = () => {
   useEffect(() => {
     const fetchChartData = async () => {
       try {
-        const response = await axios.get('http://localhost:9003/api/auth/books/book');
+        const response = await axios.get('https://book-master-backend-new-1.onrender.com/api/auth/books/book');
         const books = response.data.books;
 
         // Calculate total books per category

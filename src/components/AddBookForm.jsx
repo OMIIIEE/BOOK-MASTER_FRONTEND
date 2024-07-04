@@ -30,7 +30,7 @@ const AddBookForm = ({ isAdmin, closeModal }) => {
 
     try {
       const res = await axios.post(
-        "http://localhost:9003/api/auth/books",
+        "https://book-master-backend-new-1.onrender.com/api/auth/books",
         { ...book },
         {
           headers: {

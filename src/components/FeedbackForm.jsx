@@ -21,7 +21,7 @@ const FeedbackForm = ({ onClose }) => {
     }
     try {
       const res = await axios.post(
-        'http://localhost:9003/api/feedback',
+        'https://book-master-backend-new-1.onrender.com/api/feedback',
         { willComeBack, bookRating, recommend, comment },
         { headers: { Authorization: `Bearer ${token}` } }
       );

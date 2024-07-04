@@ -49,7 +49,7 @@ const UserList = ({ users }) => {
         }
 
         const response = await axios.delete(
-          `http://localhost:9003/api/auth/user/${userId}`,
+          `https://book-master-backend-new-1.onrender.com/api/auth/user/${userId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -187,7 +187,7 @@ export default UserList;
 //         }
 
 //         const response = await axios.delete(
-//           `http://localhost:9003/api/auth/user/${userId}`,
+//           `https://book-master-backend-new-1.onrender.com/api/auth/user/${userId}`,
 //           {
 //             headers: {
 //               Authorization: `Bearer ${token}`,

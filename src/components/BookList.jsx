@@ -46,7 +46,7 @@ const BookList = ({
     try {
       const token = localStorage.getItem("token");
       await axios.post(
-        "http://localhost:9003/api/purchases",
+        "https://book-master-backend-new-1.onrender.com/api/purchases",
         {
           userId: user._id,
           bookId: selectedBook._id,

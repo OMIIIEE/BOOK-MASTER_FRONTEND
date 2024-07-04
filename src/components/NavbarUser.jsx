@@ -34,7 +34,7 @@ const NavbarUser = ({ user, wishlistCount, onAddBookClick }) => {
 
     try {
       const res = await axios.post(
-        'http://localhost:9003/api/auth/logout',
+        'https://book-master-backend-new-1.onrender.com/api/auth/logout',
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -57,7 +57,7 @@ const NavbarUser = ({ user, wishlistCount, onAddBookClick }) => {
     const token = localStorage.getItem('token');
     try {
       const res = await axios.put(
-        'http://localhost:9003/api/auth/user/avatar',
+        'https://book-master-backend-new-1.onrender.com/api/auth/user/avatar',
         { avatar },
         { headers: { Authorization: `Bearer ${token}` } }
       );

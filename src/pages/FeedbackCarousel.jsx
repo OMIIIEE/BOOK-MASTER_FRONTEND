@@ -13,7 +13,7 @@ const FeedbackCarousel = () => {
   useEffect(() => {
     const fetchFeedback = async () => {
       try {
-        const response = await axios.get('http://localhost:9003/api/feedback');
+        const response = await axios.get('https://book-master-backend-new-1.onrender.com/api/feedback');
         if (response.data.success) {
           setTestimonials(response.data.latestFeedbacks);
         } else {

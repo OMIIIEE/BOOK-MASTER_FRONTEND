@@ -26,7 +26,7 @@ const UserDashboard = () => {
       try {
         const token = localStorage.getItem("token");
         const res = await axios.get(
-          "http://localhost:9003/api/auth/books/book",
+          "https://book-master-backend-new-1.onrender.com/api/auth/books/book",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -52,7 +52,7 @@ const UserDashboard = () => {
     const fetchUserData = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("http://localhost:9003/api/auth/user", {
+        const res = await axios.get("https://book-master-backend-new-1.onrender.com/api/auth/user", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUser(res.data.user);
@@ -70,7 +70,7 @@ const UserDashboard = () => {
       try {
         const token = localStorage.getItem("token");
         const res = await axios.get(
-          `http://localhost:9003/api/wishlist/${user._id}`,
+          `https://book-master-backend-new-1.onrender.com/api/wishlist/${user._id}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -91,7 +91,7 @@ const UserDashboard = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.post(
-        "http://localhost:9003/api/wishlist",
+        "https://book-master-backend-new-1.onrender.com/api/wishlist",
         { userId: user._id, books: newWishlist },
         {
           headers: { Authorization: `Bearer ${token}` },

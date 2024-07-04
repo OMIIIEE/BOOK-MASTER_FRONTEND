@@ -21,7 +21,7 @@ const Sidebar = ({user,role,onAddBookClick,toggleBookDetails }) => {
   
       try {
         const res = await axios.post(
-          "http://localhost:9003/api/auth/logout",
+          "https://book-master-backend-new-1.onrender.com/api/auth/logout",
           {},
           { headers: { Authorization: `Bearer ${token}` } }
         );
@@ -157,7 +157,7 @@ export default Sidebar;
   
 //       try {
 //         const res = await axios.post(
-//           "http://localhost:9003/api/auth/logout",
+//           "https://book-master-backend-new-1.onrender.com/api/auth/logout",
 //           {},
 //           { headers: { Authorization: `Bearer ${token}` } }
 //         );

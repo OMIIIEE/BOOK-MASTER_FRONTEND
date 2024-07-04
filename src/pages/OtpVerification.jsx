@@ -21,7 +21,7 @@ const OtpVerification = () => {
   const verifyOtp = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:9003/api/otp/verify-otp", { email, otp });
+      const res = await axios.post("https://book-master-backend-new-1.onrender.com/api/otp/verify-otp", { email, otp });
       console.log(res);
       alert(res.data.message);
       if (res.data.success) {

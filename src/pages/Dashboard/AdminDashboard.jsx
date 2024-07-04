@@ -33,16 +33,16 @@ const AdminDashboard = () => {
       try {
         const token = localStorage.getItem("token");
         const [userRes, bookRes, purchaseRes,enquiryRes] = await Promise.all([
-          axios.get("http://localhost:9003/api/auth/users", {
+          axios.get("https://book-master-backend-new-1.onrender.com/api/auth/users", {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          axios.get("http://localhost:9003/api/auth/books/book", {
+          axios.get("https://book-master-backend-new-1.onrender.com/api/auth/books/book", {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          axios.get("http://localhost:9003/api/purchases", {
+          axios.get("https://book-master-backend-new-1.onrender.com/api/purchases", {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          axios.get("http://localhost:9003/api/enquiry", {
+          axios.get("https://book-master-backend-new-1.onrender.com/api/enquiry", {
             headers: { Authorization: `Bearer ${token}` },
           }),
         ]);

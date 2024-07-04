@@ -10,7 +10,7 @@ const BookDetails = ({}) => {
   useEffect(() => {
     const fetchPublishers = async () => {
       try {
-        const response = await axios.get("http://localhost:9003/api/auth/books/publishers");
+        const response = await axios.get("https://book-master-backend-new-1.onrender.com/api/auth/books/publishers");
         setPublishers(response.data.publishers);
       } catch (error) {
         console.error("Error fetching publishers:", error);
@@ -33,7 +33,7 @@ const BookDetails = ({}) => {
   const handleSaveEdit = async () => {
     try {
       // Update the book in the backend
-      await axios.put(`http://localhost:9003/api/auth/books/${editedBook._id}`, editedBook);
+      await axios.put(`https://book-master-backend-new-1.onrender.com/api/auth/books/${editedBook._id}`, editedBook);
       
       // Update the book in the frontend
       const updatedPublishers = publishers.map(publisher => ({
@@ -64,7 +64,7 @@ const BookDetails = ({}) => {
   const handleDelete = async (bookId) => {
     try {
       // Delete the book from the backend
-      await axios.delete(`http://localhost:9003/api/auth/books/${bookId}`);
+      await axios.delete(`https://book-master-backend-new-1.onrender.com/api/auth/books/${bookId}`);
       
       // Delete the book from the frontend
       const updatedPublishers = publishers.map(publisher => ({

@@ -22,7 +22,7 @@ const EnquiryForm = ({ closeModal }) => {
   const submitEnquiry = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:9003/api/enquiry", enquiry);
+      const response = await axios.post("https://book-master-backend-new-1.onrender.com/api/enquiry", enquiry);
 
       if (response.data.success) {
         alert("Enquiry successfully sent!");
