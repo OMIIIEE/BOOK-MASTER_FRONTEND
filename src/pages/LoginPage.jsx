@@ -83,7 +83,7 @@ const Login = () => {
 
   return (
     <div
-      className="w-full items-center justify-center"
+      className="w-full items-center justify-center h-screen p-4"
       style={{
         backgroundImage: `url(${bgimage})`,
         backgroundSize: "cover",
@@ -100,7 +100,7 @@ const Login = () => {
           </button>
         </Link>
       </div>
-      <section className="flex justify-center items-center h-screen ">
+      <section className="flex justify-center items-center mt-24">
         <Container className="flex justify-center items-center w-full">
           <Row>
             <Col lg="8" className="m-auto h-full">

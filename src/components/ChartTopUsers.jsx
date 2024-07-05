@@ -3,6 +3,7 @@ import Chart from 'chart.js/auto';
 
 const ChartTopUsers = ({ users }) => {
   const chartRef = useRef(null);
+  const chartInstanceRef = useRef(null);
 
   useEffect(() => {
     const calculateTopUsers = () => {
@@ -15,7 +16,7 @@ const ChartTopUsers = ({ users }) => {
         };
       });
 
-      // Sort users by total quantity in descending order
+      // Sorting users by total quantity in descending order
       usersWithTotalPurchases.sort((a, b) => b.totalQuantity - a.totalQuantity);
 
       // Take top 5 users with maximum total quantity
@@ -37,19 +38,19 @@ const ChartTopUsers = ({ users }) => {
       };
 
       if (chartRef.current) {
-        if (chartRef.current.chartInstance) {
-          chartRef.current.chartInstance.destroy();
+        if (chartInstanceRef.current) {
+          chartInstanceRef.current.destroy();
         }
 
         const ctx = chartRef.current.getContext('2d');
-        chartRef.current.chartInstance = new Chart(ctx, {
+        chartInstanceRef.current = new Chart(ctx, {
           type: 'bar',
           data: chartData,
           options: {
             plugins: {
               title: {
                 display: true,
-                text: 'Top Users with Maximum Books Purchased',
+                text: 'Top USERS with Maximum Books Purchased',
                 font: {
                   size: 30,
                   weight: 'bold',
@@ -80,8 +81,8 @@ const ChartTopUsers = ({ users }) => {
 
     // Clean up on component unmount
     return () => {
-      if (chartRef.current.chartInstance) {
-        chartRef.current.chartInstance.destroy();
+      if (chartInstanceRef.current) {
+        chartInstanceRef.current.destroy();
       }
     };
   }, [users]); // Watch for changes in users prop

@@ -7,6 +7,7 @@ import Chart from 'chart.js/auto';
 
 const ChartComponentB = () => {
   const chartRef = useRef(null);
+  const chartInstanceRef = useRef(null);
 
   useEffect(() => {
     const fetchChartData = async () => {
@@ -32,7 +33,7 @@ const ChartComponentB = () => {
             {
               label: 'Total Books per Category',
               data: Object.values(categories),
-              backgroundColor: 'rgba(255, 99, 132, 0.6)', // Example color
+              backgroundColor: 'rgba(255, 99, 132, 0.6)',
             },
           ],
         };
@@ -46,7 +47,7 @@ const ChartComponentB = () => {
 
           
           const ctx = chartRef.current.getContext('2d');
-          chartRef.current.chartInstance = new Chart(ctx, {
+          chartInstanceRef.current = new Chart(ctx, {
             type: 'bar',
             data: chartData,
             options: {
@@ -87,8 +88,9 @@ const ChartComponentB = () => {
 
     // Clean up on component unmount
     return () => {
-      if (chartRef.current.chartInstance) {
-        chartRef.current.chartInstance.destroy();
+      if (chartInstanceRef.current) {
+        chartInstanceRef.current.destroy();
+        chartInstanceRef.current = null;
       }
     };
   }, []);
