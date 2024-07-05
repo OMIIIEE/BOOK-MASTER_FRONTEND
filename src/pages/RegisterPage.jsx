@@ -177,8 +177,8 @@ const Register = () => {
 
       if (res.data.success) {
         
-        // navigate("/login");
-        navigate("/verify-otp", { state: { email: user.email } });
+        navigate("/login");
+        // navigate("/verify-otp", { state: { email: user.email } });
         
       }
     } catch (err) {
