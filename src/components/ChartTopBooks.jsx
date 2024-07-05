@@ -26,7 +26,7 @@ const ChartTopBooks = ({ token }) => {
       // Calculate total quantity purchased for each book
       const bookMap = new Map();
       purchases.forEach(purchase => {
-        const bookId = purchase.bookId._id;
+        const bookId = purchase.bookId;
         if (bookMap.has(bookId)) {
           bookMap.get(bookId).quantity += purchase.quantity;
         } else {
