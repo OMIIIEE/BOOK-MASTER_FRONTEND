@@ -111,7 +111,7 @@ const Navbar = ({ user, role, onAddBookClick, toggleSection, section }) => {
   };
 
   const getLinkClass = (path) => {
-    return section === path ? "text-yellow-500" : "text-white";
+    return section === path ? "text-yellow-500 font-bold" : "text-white";
   };
 
   return (
@@ -127,27 +127,30 @@ const Navbar = ({ user, role, onAddBookClick, toggleSection, section }) => {
           <img src={logo} className="w-[9rem]" alt="Logo" />
         </Link>
       </div>
-      <div className="flex items-center flex-row gap-8">
-      <button onClick={onAddBookClick} className={getLinkClass("add-book")}>
-          Add Book
+      <div className="flex items-center flex-row gap-6">
+      <button onClick={() => toggleSection("home")} className={`${getLinkClass("home")} hover:text-yellow-300 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 tracking-wider`}>
+          {/* Home */}
+          HOME
         </button>
-        <button onClick={() => toggleSection("home")} className={getLinkClass("home")}>
-          Home
+        <button onClick={onAddBookClick} className={`${getLinkClass("add-book")} hover:text-yellow-300 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 tracking-wider`}>
+          {/* Add Book */}
+          ADD BOOK
         </button>
-        <button onClick={() => toggleSection("userDetails")} className={getLinkClass("userDetails")}>
-          User List
+        <button onClick={() => toggleSection("userDetails")} className={`${getLinkClass("userDetails")} hover:text-yellow-300 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 tracking-wider`}>
+          USER LIST
         </button>
-        <button onClick={() => toggleSection("bookDetails")} className={getLinkClass("bookDetails")}>
-          Book Details
+        <button onClick={() => toggleSection("bookDetails")} className={`${getLinkClass("bookDetails")} hover:text-yellow-300 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 tracking-wider`}>
+          BOOK DETAILS
         </button>
-        <button onClick={() => toggleSection("bookingDetails")} className={getLinkClass("bookingDetails")}>
-          Purchase Details
+        <button onClick={() => toggleSection("bookingDetails")} className={`${getLinkClass("bookingDetails")} hover:text-yellow-300 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 tracking-wider`}>
+          {/* Purchase Details */}
+          PURCHASE DETAILS
         </button>
-        <button onClick={() => toggleSection("enquiryDetails")} className={getLinkClass("enquiryDetails")}>
-          Enquiries
+        <button onClick={() => toggleSection("enquiryDetails")} className={`${getLinkClass("enquiryDetails")} hover:text-yellow-300 transition duration-300 ease-in-out  transform hover:-translate-y-1 hover:scale-105 tracking-wider`}>
+          ENQUIRIES
         </button>
-        <button onClick={handleLogout} className="bg-transparent border-0 text-white">
-          Logout
+        <button onClick={handleLogout} className="bg-transparent border-0 text-white hover:text-yellow-300 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 tracking-wider">
+          LOGOUT
         </button>
       </div>
     </div>

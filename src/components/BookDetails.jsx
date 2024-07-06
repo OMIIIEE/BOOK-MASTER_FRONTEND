@@ -82,7 +82,7 @@ const BookDetails = ({}) => {
 
   return (
     <div className="container p-8 w-full flex flex-col items-center">
-      <h2 className="text-3xl mb-6 font-abril">Book Details</h2>
+      <h2 className="text-3xl mb-6 uppercase tracking-wider">Book Details</h2>
       {publishers.length === 0 ? (
         <div>Loading...</div>
       ) : (

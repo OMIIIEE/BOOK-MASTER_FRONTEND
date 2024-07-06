@@ -1,7 +1,3 @@
-
-
-
-
 import React, { useState } from 'react';
 import Pagination from './Pagination';
 
@@ -21,7 +17,7 @@ const Booking = ({ bookings }) => {
 
   return (
     <div className="container p-8 w-full flex flex-col items-center">
-      <h2 className="text-2xl font-abril mb-4">Booking Information</h2>
+      <h2 className="text-2xl font-semibold mb-4 uppercase tracking-wider">purchase Information</h2>
       <table className="min-w-full w-[1400px] bg-white border border-gray-200">
         <thead className='bg-gray-100'>
           <tr>

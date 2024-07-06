@@ -67,12 +67,20 @@ const ChartComponentB = () => {
                   title: {
                     display: true,
                     text: 'Number of Books',
+                    font: {
+                      size: 13,
+                      weight: 'bold',
+                    },
                   },
                 },
                 x: {
                   title: {
                     display: true,
-                    text: 'Categories',
+                    text: 'CATEGORIES',
+                    font: {
+                      size: 13,
+                      weight: 'bold',
+                    },
                   },
                 },
               },

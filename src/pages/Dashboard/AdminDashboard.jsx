@@ -104,12 +104,12 @@ const AdminDashboard = () => {
           section={section}
         />
         
-        <div className="container items-center flex flex-col gap-8 p-8">
+        <div className="container items-center flex flex-col gap-8  py-2">
           {section === "home" && (
             <>
-              <div className="text-3xl">Welcome to Admin Dashboard</div>
+              <div className="text-3xl uppercase tracking-wider">Welcome to Admin Dashboard</div>
               <div></div>
-              <div className="w-1/2 flex items-center gap-16 left-0 justify-center h-[50vh] slide-up">
+              <div className="w-1/2 flex items-center gap-16 left-0 justify-center  slide-up">
                 <ChartComponentB />
                 <ChartTopUsers users={users} />
               </div>
@@ -119,22 +119,22 @@ const AdminDashboard = () => {
             </>
           )}
           {section === "userDetails" && (
-            <div className="slide-up">
+            <div className="slide-up -mt-12">
               <UserList users={users} />
             </div>
           )}
           {section === "bookDetails" && (
-            <div className="slide-up">
+            <div className="slide-up -mt-8">
               <BookDetails books={books} setBooks={setBooks} />
             </div>
           )}
           {section === "bookingDetails" && (
-            <div className="slide-up">
+            <div className="slide-up -my-4">
               <Booking bookings={getBookingDetails()} />
             </div>
           )}
           {section === "enquiryDetails" && (
-            <div className="slide-up">
+            <div className="slide-up mt-6">
               <EnquiryList enquiries={enquiries} setEnquiries={setEnquiries} />
             </div>
           )}
@@ -143,7 +143,7 @@ const AdminDashboard = () => {
             <AddBookForm
               isAdmin={true}
               closeModal={handleCloseModal}
-              className="-mt-4 slide-up"
+              className=""
             />
            
           )}

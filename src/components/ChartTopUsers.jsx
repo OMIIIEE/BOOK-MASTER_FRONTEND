@@ -50,7 +50,7 @@ const ChartTopUsers = ({ users }) => {
             plugins: {
               title: {
                 display: true,
-                text: 'Top USERS with Maximum Books Purchased',
+                text: 'Top Users with Maximum Books Purchased',
                 font: {
                   size: 30,
                   weight: 'bold',
@@ -63,12 +63,20 @@ const ChartTopUsers = ({ users }) => {
                 title: {
                   display: true,
                   text: 'Number of Books Purchased',
+                  font: {
+                    size: 13,
+                    weight: 'bold',
+                  },
                 },
               },
               x: {
                 title: {
                   display: true,
-                  text: 'Users',
+                  text: 'USERS',
+                  font: {
+                    size: 13,
+                    weight: 'bold',
+                  },
                 },
               },
             },

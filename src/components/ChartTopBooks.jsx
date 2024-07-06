@@ -71,12 +71,20 @@ const ChartTopBooks = ({ purchases }) => {
                 title: {
                   display: true,
                   text: 'Quantity Purchased',
+                  font: {
+                    size: 13,
+                    weight: 'bold',
+                  },
                 },
               },
               x: {
                 title: {
                   display: true,
-                  text: 'Books',
+                  text: 'BOOKS',
+                  font: {
+                    size: 13,
+                    weight: 'bold',
+                  },
                 },
               },
             },
