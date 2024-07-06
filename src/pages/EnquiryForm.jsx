@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import axios from "axios";
 import { Form, FormGroup, Button } from "reactstrap";
 import img1  from "../assets/home-enquiry.png"
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const EnquiryForm = ({ closeModal }) => {
   const [enquiry, setEnquiry] = useState({
@@ -10,6 +12,10 @@ const EnquiryForm = ({ closeModal }) => {
     subject:"",
     message: "",
   });
+
+  useEffect(() => {
+    AOS.init({ duration: 2000 });
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -34,9 +40,6 @@ const EnquiryForm = ({ closeModal }) => {
           subject: "",
           message: ""
         });
-
-        // Optionally close modal after showing alert
-        // closeModal();
       } else {
         alert("Failed to send enquiry. Please try again.");
       }
@@ -48,12 +51,12 @@ const EnquiryForm = ({ closeModal }) => {
 
   return (
     <div className="relative inset-0 bg-opacity-30 backdrop-blur-sm  flex justify-center items-center  p-4 z-10  flex-row gap-8">
-      <div className="text-center text-white">
+      <div className="text-center text-white" data-aos="fade-right">
         <img src={img1} alt="" className="w-[400px]"/>
         <span className="text-5xl font-bold block mb-2 font-abril ">Have An Enquiry?</span>
         <h2 className="text-3xl font-pacifico mb-4">Get in Touch</h2>
       </div>
-      <div className="border-yellow-500 border-r-4 border-t-4 rounded-xl p-8 w-full max-w-md">
+      <div className="border-yellow-500 border-r-4 border-t-4 rounded-xl p-8 w-full max-w-md" data-aos="fade-left">
         <h2 className="text-3xl md:text-5xl mb-4 text-[#FDC702] font-comforter text-center">Enquiry Form</h2>
         <Form onSubmit={submitEnquiry}>
           <FormGroup className="mb-4">

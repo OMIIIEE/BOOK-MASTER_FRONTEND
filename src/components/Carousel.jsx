@@ -4,6 +4,8 @@ import img2 from '../assets/carousel/a4.jpg';
 import img3 from '../assets/carousel/a6.jpg';
 import img4 from '../assets/carousel/a2.png';
 import img1 from '../assets/carousel/Desktop.png';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Carousel = () => {
   const location = useLocation();
@@ -13,6 +15,10 @@ const Carousel = () => {
   const slidesRef = useRef([]);
   const autoNextTimeoutRef = useRef(null);
   const runTimeoutRef = useRef(null);
+
+  useEffect(() => {
+    AOS.init({ duration: 1700 });
+  }, []);
 
   useEffect(() => {
     autoNextTimeoutRef.current = setTimeout(() => {
@@ -50,13 +56,13 @@ const Carousel = () => {
           <div
             key={index}
             ref={(el) => (slidesRef.current[index] = el)}
-            className={`item absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+            className={`item absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'}` } 
           >
             <img src={slide.img} alt="" className="w-full h-full object-fit z-10 " />
-            <div className="content flex flex-col justify-center absolute top-1/2 left-0 transform -translate-y-1/2 text-white shadow-lg p-4 bg-black bg-opacity-70 rounded-r-full h-[80vh] w-1/3 z-20">
-              <div className="title text-5xl leading-tight font-abril">{slide.title}</div>
-              <div className="topic text-5xl leading-tight text-orange-500 font-abril">{slide.topic}</div>
-              <div className=" mt-4 font-pacifico text-lg">{slide.description}</div>
+            <div className="content flex flex-col justify-center absolute top-1/2 left-0 transform -translate-y-1/2 text-white shadow-lg p-4 bg-black bg-opacity-70 rounded-r-full h-[80vh] w-1/3 z-20" >
+              <div className="title text-5xl leading-tight font-abril" data-aos="fade-up">{slide.title}</div>
+              <div className="topic text-5xl leading-tight text-orange-500 font-abril" >{slide.topic}</div>
+              <div className=" mt-4 font-pacifico text-xl"  >{slide.description}</div>
               <div className="buttons mt-4 grid grid-cols-2 gap-2">
                 {location.pathname === '/' && (
                   <>
@@ -90,6 +96,7 @@ const slides = [
     title: 'THE BOOK MASTER',
     topic: 'TALES',
     description: 'An intriguing dive into captivating stories and narratives.',
+    
   },
   {
     img: img3,

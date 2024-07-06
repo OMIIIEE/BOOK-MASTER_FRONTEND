@@ -7,22 +7,19 @@ import {
   faEnvelope,
   faSignInAlt,
   faUserPlus,
- 
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
-import logo from "../assets/logo3.png";
 import Footer from "../components/Footer";
 import Carousel from "../components/Carousel";
 import EnquiryForm from "./EnquiryForm";
 import BooksSection from "./BooksSection";
-
 import FeedbackCarousel from "./FeedbackCarousel";
 import AuthorsCarousel from "../components/AuthorsCarousel";
-
 import PopularBooks from "./PopularBooks";
-import { MoveRight } from 'lucide-react';
-import color1 from "../assets/color1.png"
-import logotaskmaster from "../assets/IMAGE2.png"
+import { MoveRight } from "lucide-react";
+import logotaskmaster from "../assets/IMAGE2.png";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const HomePage = () => {
   const [books, setBooks] = useState([]);
@@ -33,7 +30,6 @@ const HomePage = () => {
   const [showPopularBooks, setShowPopularBooks] = useState(true);
   const enquiryFormRef = useRef(null);
   const navRef = useRef(null);
-  
 
   const popularBooks = [
     {
@@ -42,7 +38,7 @@ const HomePage = () => {
       image:
         "https://1.bp.blogspot.com/-KxpQoi_yiJ0/XV0QxUHutBI/AAAAAAAA-6E/2ydtJ9a0cZQ0dT1T1WjUi67cOIwrME04wCLcBGAs/s1600/19537D2F-9429-4000-A26B-644EC9EB4E0C.jpeg",
     },
-   
+
     {
       id: 3,
       title: "Berserk",
@@ -82,6 +78,9 @@ const HomePage = () => {
         "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1398034300i/5107.jpg",
     },
   ];
+  useEffect(() => {
+    AOS.init({ duration: 1700 });
+  }, []);
 
   useEffect(() => {
     const fetchBookData = async () => {
@@ -133,12 +132,12 @@ const HomePage = () => {
         // backgroundImage: `url(${backgroundImage})`,
         backgroundImage: `url('https://sbmweb.com/wp-content/uploads/2019/07/sbm-dark-background.jpg')`,
         backgroundSize: "repeat-y",
-        backgroundPosition: 'center',
+        backgroundPosition: "center",
         backgroundColor: "black",
       }}
     >
       {/* Header Section */}
-      <div
+      <div data-aos="fade-up"
         className="sticky top-0 flex justify-between items-center  py-4 px-24 z-50"
         style={{
           // backgroundImage: `url(${backgroundImage})`,
@@ -149,7 +148,11 @@ const HomePage = () => {
       >
         <div className="flex items-center gap-4">
           <Link to="/" className="font-abril text-2xl">
-            <img src={logotaskmaster} className="w-36 shadow-lg text-white " alt="Logo" />
+            <img
+              src={logotaskmaster}
+              className="w-36 shadow-lg text-white "
+              alt="Logo"
+            />
           </Link>
         </div>
         <div className="flex items-center gap-8 hover:scale-110%">
@@ -172,85 +175,90 @@ const HomePage = () => {
           {/* <FontAwesomeIcon icon={faUser} className="mr-2 text-white" /> */}
           {/* PROFILE
         </Link> */}
-          <Link to="/login" className="text-white flex items-center hover:text-pink-500 hover:scale-110 transition-transform duration-300">
+          <Link
+            to="/login"
+            className="text-white flex items-center hover:text-pink-500 hover:scale-110 transition-transform duration-300"
+          >
             <FontAwesomeIcon icon={faSignInAlt} className="mr-2" />
             LOGIN
           </Link>
-          <Link to="/register" className="text-white flex items-center hover:text-pink-500 hover:scale-110 transition-transform duration-300">
+          <Link
+            to="/register"
+            className="text-white flex items-center hover:text-pink-500 hover:scale-110 transition-transform duration-300"
+          >
             <FontAwesomeIcon icon={faUserPlus} className="mr-2" />
             SIGNUP
           </Link>
         </div>
       </div>
 
-      <div className="my-2" ref={navRef}>
+      <div className="my-2" ref={navRef} data-aos="fade-right">
         <Carousel />
       </div>
-<div className="flex items-center justify-center my-4 flex-col" >
-      <div className="flex items-center justify-center ">
-        {showPopularBooks ? (
-          <PopularBooks popularBooks={popularBooks} />
-        ) : (
-          <div className="w-full">
-            <div className="mx-24 mt-12 w-1/3">
-              <span className="font-lg mr-2 uppercase text-xl text-white">
-                Filter by Category : 
-              </span>
-              <select
-                onChange={(e) => filterBooksByCategory(e.target.value)}
-                className="font-pacifico w-1/3 text-sm border rounded-lg px-4"
-              >
-                {categories.map((category, index) => (
-                  <option
-                    key={index}
-                    value={category}
-                    className="font-pacifico"
-                  >
-                    {category}
-                  </option>
-                ))}
-              </select>
+      <div className="flex items-center justify-center my-16  flex-col">
+        <div className="flex items-center justify-center " data-aos="fade-up">
+          {showPopularBooks ? (
+            <PopularBooks popularBooks={popularBooks} />
+          ) : (
+            <div className="w-full">
+              <div className="mx-24 mt-12 w-1/3">
+                <span className="font-lg mr-2 uppercase text-xl text-white">
+                  Filter by Category :
+                </span>
+                <select
+                  onChange={(e) => filterBooksByCategory(e.target.value)}
+                  className="font-pacifico w-1/3 text-sm border rounded-lg px-4"
+                >
+                  {categories.map((category, index) => (
+                    <option
+                      key={index}
+                      value={category}
+                      className="font-pacifico"
+                    >
+                      {category}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <BooksSection
+                books={books}
+                filteredBooks={filteredBooks}
+                wishlist={wishlist}
+                toggleWishlist={toggleWishlist}
+                error={error}
+                data-aos="fade-up"
+              />
             </div>
-            <BooksSection
-              books={books}
-              filteredBooks={filteredBooks}
-              wishlist={wishlist}
-              toggleWishlist={toggleWishlist}
-              error={error}
-            />
-          </div>
-        )}
-      </div>
-      <button
-        className="flex justify-center text-white items-center gap-2  rounded uppercase hover:text-pink-500 hover:scale-110 transition-transform duration-300"
-        onClick={() => setShowPopularBooks(!showPopularBooks)}
-      >
-       
-        <span className="border border-pink-500 rounded-full p-2"><MoveRight/></span>
-       
+          )}
+        </div>
+        <button
+          className="flex justify-center text-white items-center gap-2  rounded uppercase hover:text-pink-500 hover:scale-110 transition-transform duration-300"
+          onClick={() => setShowPopularBooks(!showPopularBooks)}
+        >
+          <span className="border border-pink-500 rounded-full p-2">
+            <MoveRight />
+          </span>
+
           {showPopularBooks ? "View more Books" : "Back to Popular Books"}
-      
-      </button>
+        </button>
       </div>
 
-<div className="text-center">
-      
-      </div>
+      <div className="text-center"></div>
 
       {/* Author carousel */}
-      <div>
+      <div data-aos="fade-up">
         <AuthorsCarousel />
       </div>
 
       {/* Enquiry Form */}
-      <div ref={enquiryFormRef} className="mt-16">
+      <div data-aos="fade-up" ref={enquiryFormRef} className="mt-16">
         <EnquiryForm />
       </div>
       {/* <div className=" absolute right-0 w-96">
      <img src={color1} alt="" /></div> */}
 
       {/* Customer Feedback Carousel */}
-      <div className="mt-16">
+      <div className="mt-16" data-aos="zoom-in">
         <FeedbackCarousel />
       </div>
 

@@ -17,21 +17,21 @@ const handleWishlistClick =()=>{
   navigate('/login');
 }
   return (
-    <div className="border border-white shadow-lg h-auto flex flex-col items-center py-4 rounded-lg bg-white hover:scale-110 transition-transform duration-300 ">
+    <div className="border border-white shadow-lg h-auto flex flex-col items-center py-4 px-2 rounded-lg bg-white w-[18rem]  hover:scale-105 transition-transform duration-300">
       <div className="relative">
         <img
           src={book.imageLink || "https://via.placeholder.com/150"}
           alt={book.name}
-          className="h-[38vh] object-cover rounded-t-md "
+          className="h-[38vh] object-cover rounded-t-md hover:scale-105 transition-transform duration-300 "
         />
         <button
-          className="absolute top-[-10px] right-[-10px] z-10"
+          className="absolute top-[-10px] right-[-20px] z-10 border rounded-full p-1 bg-white"
           // onClick={() => toggleWishlist(book._id)}
           onClick={handleWishlistClick}
         >
           <FaHeart
             className={`text-2xl  ${
-              wishlist.includes(book._id) ? "text-red-500" : "text-blue-200"
+              wishlist.includes(book._id) ? "text-red-500" : "text-blue-300"
             }`}
           />
         </button>
@@ -44,7 +44,7 @@ const handleWishlistClick =()=>{
               <Link
                 to={`#`}
                 className="text-[#00224D] hover:text-[#029D9D] no-underline uppercase text-lg"
-                //  className="text-white hover:text-[#029D9D] no-underline"
+               
               >
                 {book.name}
               </Link>

@@ -88,13 +88,13 @@ const BookList = ({
       {books.map((book) => (
         <Card
           key={book._id}
-          className="border-none shadow-lg h-auto w-auto flex flex-col items-center py-4 hover:scale-110 transition-transform duration-300 bg-white rounded-lg "
+          className="border-none shadow-lg h-auto w-auto flex flex-col items-center py-4 hover:scale-105 transition-transform duration-300 bg-white rounded-lg "
         >
           <div className="relative ">
             <img
               src={book.imageLink || "https://via.placeholder.com/150"}
               alt={book.name}
-              className="h-[38vh] object-cover rounded-t-md z-10"
+              className="h-[38vh] object-cover rounded-t-md z-10 hover:scale-105 transition-transform duration-300"
             />
             <button
               className="absolute top-[-10px] right-[-10px] z-10"
@@ -102,7 +102,7 @@ const BookList = ({
             >
               <FaHeart
                 className={`text-2xl ${
-                  wishlist.includes(book._id) ? "text-red-500 scale-110 transition-transform duration-300" : "text-blue-200"
+                  wishlist.includes(book._id) ? "text-red-500 scale-110 transition-transform duration-300" : "text-blue-300"
                 }`}
               />
             </button>

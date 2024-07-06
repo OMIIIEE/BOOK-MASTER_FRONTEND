@@ -3,11 +3,11 @@ import axios from "axios";
 import NavbarUser from "../../components/NavbarUser";
 import ShowBooks from "../../components/ShowBooks";
 import Wishlist from "../Wishlist";
-
-import SidebarUser from "../../components/SidebarUser";
 import Footer from "../../components/Footer";
 import Carousel from "../../components/Carousel";
 import AuthorsCarousel from "../../components/AuthorsCarousel";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 
 
@@ -31,14 +31,14 @@ const UserDashboard = () => {
             headers: { Authorization: `Bearer ${token}` },
           }
         );
-        // setBooks(res.data.books);
+        
         const booksData = res.data.books;
         const uniqueCategories = [
           ...new Set(booksData.map((book) => book.category)),
         ];
-        setCategories(["All", ...uniqueCategories]); // Include 'All' option
+        setCategories(["All", ...uniqueCategories]); 
         setBooks(booksData);
-        setCategorisedBooks(booksData); // Set initial filtered books
+        setCategorisedBooks(booksData);
       } catch (error) {
         console.error("Error fetching books data:", error);
         setError(error.message);
@@ -47,7 +47,11 @@ const UserDashboard = () => {
     fetchBookData();
   }, []);
 
-  // Fetch user data
+  useEffect(() => {
+    AOS.init({ duration: 1600 });
+  }, []);
+
+
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -64,7 +68,7 @@ const UserDashboard = () => {
     fetchUserData();
   }, []);
 
-  // Fetch wishlist from backend
+  
   useEffect(() => {
     const fetchWishlist = async () => {
       try {
@@ -75,8 +79,8 @@ const UserDashboard = () => {
             headers: { Authorization: `Bearer ${token}` },
           }
         );
-        // setWishlist(res.data.wishlist);
-        setWishlist(res.data.wishlist.map((book) => book._id)); // Store book IDs only
+       
+        setWishlist(res.data.wishlist.map((book) => book._id)); 
       } catch (error) {
         console.error("Error fetching wishlist data:", error);
       }
@@ -86,7 +90,7 @@ const UserDashboard = () => {
     }
   }, [user]);
 
-  // Update wishlist in backend
+ 
   const updateWishlist = async (newWishlist) => {
     try {
       const token = localStorage.getItem("token");
@@ -103,7 +107,7 @@ const UserDashboard = () => {
     }
   };
 
-  // Toggle book in wishlist
+ 
   const handleToggleWishlist = (bookId) => {
     const newWishlist = wishlist.includes(bookId)
       ? wishlist.filter((id) => id !== bookId)
@@ -111,7 +115,7 @@ const UserDashboard = () => {
     updateWishlist(newWishlist);
   };
 
-  // Remove book from wishlist
+
   const removeFromWishlist = (bookId) => {
     const updatedWishlist = wishlist.filter((id) => id !== bookId);
     updateWishlist(updatedWishlist);
@@ -127,7 +131,7 @@ const UserDashboard = () => {
 
   const filterBooksByCategory = (category) => {
     if (category === "All") {
-      setCategorisedBooks(books); // Show all books if 'All' is selected
+      setCategorisedBooks(books); 
     } else {
       const filtered = books.filter((book) => book.category === category);
       setCategorisedBooks(filtered);
@@ -146,17 +150,17 @@ const UserDashboard = () => {
       }}
     >
       <div className="flex flex-grow">
-        <div className="flex flex-col flex-grow">
+        <div className="flex flex-col flex-grow" data-aos="fade-down">
           <NavbarUser
             wishlistCount={wishlist.length}
             onAddBookClick={handleAddBookClick}
             user={user}
           />
-          <div className="flex flex-col  p-2 mt-16 ">
-            <div>
+          <div className="flex flex-col    ">
+            <div >
               <Carousel className="w-[1400px]" />
             </div>
-            <div className="container mx-auto px-4 py-1 flex-grow mt-8 w-full">
+            <div className="container mx-auto px-4 py-1 flex-grow mt-8 w-full" data-aos="zoom-in">
               <ShowBooks
                 user={user}
                 books={books}
@@ -174,7 +178,7 @@ const UserDashboard = () => {
                 />
               )}
             </div>
-            <div className="w-[1450px] ">
+            <div className="w-[1450px] " data-aos="zoom-in">
               <AuthorsCarousel />
             </div>
        

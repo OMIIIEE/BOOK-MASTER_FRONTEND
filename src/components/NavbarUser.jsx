@@ -74,7 +74,7 @@ const NavbarUser = ({ user, wishlistCount, onAddBookClick }) => {
   };
 
   return (
-    <div className="navbar bg-gradient-to-r to-amber-500 from-pink-500 text-white py-2 px-24 flex justify-between items-center fixed top-0 left-0 right-0 z-50 shadow-2xl bg-#0D0B26 bg-opacity-900"
+    <div className="navbar bg-gradient-to-r to-amber-500 from-pink-500 text-white py-2 px-24 flex justify-between items-center sticky top-0 left-0 right-0 z-50 shadow-2xl bg-#0D0B26 bg-opacity-900"
     style={{
       // backgroundImage: `url(${backgroundImage})`,
       backgroundImage: `url('https://sbmweb.com/wp-content/uploads/2019/07/sbm-dark-background.jpg')`,
