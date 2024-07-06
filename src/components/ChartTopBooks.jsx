@@ -2,31 +2,31 @@ import React, { useEffect, useRef, useState } from 'react';
 import Chart from 'chart.js/auto';
 import axios from 'axios';
 
-const ChartTopBooks = ({ token }) => {
+const ChartTopBooks = ({ token,purchases }) => {
   const chartRef = useRef(null);
-  const [purchases, setPurchases] = useState([]);
+  // const [purchases, setPurchases] = useState([]);
 
-  useEffect(() => {
-    const fetchPurchases = async () => {
-      try {
-        const response = await axios.get("https://book-master-backend-new-1.onrender.com/api/purchases", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        setPurchases(response.data);
-      } catch (error) {
-        console.error('Error fetching purchases:', error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchPurchases = async () => {
+  //     try {
+  //       const response = await axios.get("https://book-master-backend-new-1.onrender.com/api/purchases", {
+  //         // headers: { Authorization: `Bearer ${token}` },
+  //       });
+  //       setPurchases(response.data);
+  //     } catch (error) {
+  //       console.error('Error fetching purchases:', error);
+  //     }
+  //   };
 
-    fetchPurchases();
-  }, []);
+  //   fetchPurchases();
+  // }, []);
 
   useEffect(() => {
     const calculateTopBooks = () => {
       // Calculate total quantity purchased for each book
       const bookMap = new Map();
       purchases.forEach(purchase => {
-        const bookId = purchase.bookId;
+        const bookId = purchase.bookId._id;
         if (bookMap.has(bookId)) {
           bookMap.get(bookId).quantity += purchase.quantity;
         } else {

@@ -114,7 +114,7 @@ const AdminDashboard = () => {
                 <ChartTopUsers users={users} />
               </div>
               <div className=" w-full flex items-center gap-16 left-0 justify-center slide-up">
-                {/* <ChartTopBooks /> */}
+                <ChartTopBooks purchases={purchases}/>
               </div>
             </>
           )}
