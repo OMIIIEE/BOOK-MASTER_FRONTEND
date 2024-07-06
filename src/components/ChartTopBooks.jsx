@@ -1,39 +1,25 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Chart from 'chart.js/auto';
-import axios from 'axios';
 
-const ChartTopBooks = ({ token,purchases }) => {
+const ChartTopBooks = ({ purchases }) => {
   const chartRef = useRef(null);
-  // const [purchases, setPurchases] = useState([]);
-
-  // useEffect(() => {
-  //   const fetchPurchases = async () => {
-  //     try {
-  //       const response = await axios.get("https://book-master-backend-new-1.onrender.com/api/purchases", {
-  //         // headers: { Authorization: `Bearer ${token}` },
-  //       });
-  //       setPurchases(response.data);
-  //     } catch (error) {
-  //       console.error('Error fetching purchases:', error);
-  //     }
-  //   };
-
-  //   fetchPurchases();
-  // }, []);
+  const chartInstanceRef = useRef(null);
 
   useEffect(() => {
     const calculateTopBooks = () => {
       // Calculate total quantity purchased for each book
       const bookMap = new Map();
       purchases.forEach(purchase => {
-        const bookId = purchase.bookId._id;
-        if (bookMap.has(bookId)) {
-          bookMap.get(bookId).quantity += purchase.quantity;
-        } else {
-          bookMap.set(bookId, {
-            name: purchase.bookId.name,
-            quantity: purchase.quantity,
-          });
+        if (purchase.bookId && purchase.bookId._id) {
+          const bookId = purchase.bookId._id;
+          if (bookMap.has(bookId)) {
+            bookMap.get(bookId).quantity += purchase.quantity;
+          } else {
+            bookMap.set(bookId, {
+              name: purchase.bookId.name,
+              quantity: purchase.quantity,
+            });
+          }
         }
       });
 
@@ -60,8 +46,8 @@ const ChartTopBooks = ({ token,purchases }) => {
       };
 
       if (chartRef.current) {
-        if (chartRef.current.chartInstance) {
-          chartRef.current.chartInstance.destroy();
+        if (chartInstanceRef.current) {
+          chartInstanceRef.current.destroy();
         }
 
         const ctx = chartRef.current.getContext('2d');
@@ -105,8 +91,8 @@ const ChartTopBooks = ({ token,purchases }) => {
 
     // Clean up on component unmount
     return () => {
-      if (chartRef.current && chartRef.current.chartInstance) {
-        chartRef.current.chartInstance.destroy();
+      if (chartInstanceRef.current) {
+        chartInstanceRef.current.destroy();
       }
     };
   }, [purchases]);
