@@ -150,7 +150,7 @@ const UserDashboard = () => {
       }}
     >
       <div className="flex flex-grow">
-        <div className="flex flex-col flex-grow" data-aos="fade-down">
+        <div className="flex flex-col flex-grow" >
           <NavbarUser
             wishlistCount={wishlist.length}
             onAddBookClick={handleAddBookClick}
