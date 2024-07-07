@@ -79,11 +79,12 @@ const Orders = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div>
+    <div className="w-full">
     
       {/* <SidebarUser user={user}/> */}
+      <NavbarUser user={user} />
       <div className="w-full flex flex-col items-center justify-center mb-8">
-        <NavbarUser user={user} />
+        
         <div className="absolute pt-4 pl-4 mt-20 left-0 top-0">
         <Link to={"/user-dashboard"}>
           <button className="flex justify-center text-black items-center gap-2  rounded uppercase hover:text-pink-500 hover:scale-110 transition-transform duration-300 text-xl ">
