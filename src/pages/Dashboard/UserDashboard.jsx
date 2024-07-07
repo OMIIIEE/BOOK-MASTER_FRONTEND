@@ -150,7 +150,7 @@ const UserDashboard = () => {
       }}
     >
       <div className="flex flex-grow">
-        <div className="flex flex-col flex-grow" >
+        <div className="flex flex-col flex-grow" data-aos="fade-down">
           <NavbarUser
             wishlistCount={wishlist.length}
             onAddBookClick={handleAddBookClick}
@@ -160,7 +160,7 @@ const UserDashboard = () => {
             <div >
               <Carousel className="w-[1400px]" />
             </div>
-            <div className="container mx-auto px-4 py-1 flex-grow mt-8 w-full" data-aos="zoom-in">
+            <div className="container mx-auto px-4 py-1 flex-grow mt-8 w-full" >
               <ShowBooks
                 user={user}
                 books={books}
