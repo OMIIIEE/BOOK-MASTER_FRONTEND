@@ -81,7 +81,7 @@ const NavbarUser = ({ user, wishlistCount, onAddBookClick }) => {
       // backgroundSize: "repeat-y",
       backgroundPosition: 'center',
       backgroundColor: "black",
-    }}>
+    }} >
       <div className="navbar-brand">
         <Link to="/user-dashboard" className="font-abril text-2xl">
           <img src={logo} className="w-[10rem] " alt="Logo" />

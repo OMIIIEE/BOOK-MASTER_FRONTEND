@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const AuthorsCarousel = () => {
   // Static data for authors
@@ -20,8 +22,13 @@ const AuthorsCarousel = () => {
     { id: 13, name: "Agatha Christie", image: "https://images.saymedia-content.com/.image/t_share/MTc0NDY3OTMwNTMxMDQ3MDQ2/agatha-christie-the-best-selling-mystery-writer-of-all-time.jpg" },
   ];
 
+  useEffect(() => {
+    AOS.init({ duration: 1900 });
+  }, []);
+
+
   return (
-    <div className="mt-6 p-6">
+    <div className="mt-6 p-6" data-aos="fade-up">
       <h2 className="text-3xl md:text-5xl mb-4 text-[#FDC702] font-comforter text-center">Featured Authors</h2>
       <Carousel
         showArrows={true}
@@ -35,6 +42,7 @@ const AuthorsCarousel = () => {
         centerSlidePercentage={20}
         swipeable={true}
         emulateTouch={true}
+        
       >
         {authors.map((author, index) => (
           <div key={index} className="py-6 px-4">

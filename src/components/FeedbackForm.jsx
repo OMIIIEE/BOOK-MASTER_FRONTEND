@@ -1,15 +1,22 @@
 // FeedbackForm.js
 
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSmile, faFrown, faMeh, faStar, faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const FeedbackForm = ({ onClose }) => {
   const [willComeBack, setWillComeBack] = useState(null);
   const [bookRating, setBookRating] = useState(0);
   const [recommend, setRecommend] = useState(null);
   const [comment, setComment] = useState('');
+
+  useEffect(() => {
+    AOS.init({ duration: 1200 });
+  }, []);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,7 +45,7 @@ const FeedbackForm = ({ onClose }) => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
+      <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full" data-aos="fade-up">
         <h2 className="text-5xl font-comforter mb-4 text-pink-500 text-center">We'd love some feedback</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">

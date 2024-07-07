@@ -120,7 +120,14 @@ const HomePage = () => {
   };
 
   const scrollToEnquiry = () => {
-    enquiryFormRef.current.scrollIntoView({ behavior: "smooth" });
+    const offset = -200; 
+    const elementPosition = enquiryFormRef.current.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.scrollY + offset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth",
+    });
   };
   const scrollToNav = () => {
     navRef.current.scrollIntoView({ behavior: "smooth" });
@@ -171,10 +178,7 @@ const HomePage = () => {
             <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
             ENQUIRY
           </button>
-          {/* <Link to="/profile" className="text-white flex items-center"> */}
-          {/* <FontAwesomeIcon icon={faUser} className="mr-2 text-white" /> */}
-          {/* PROFILE
-        </Link> */}
+        
           <Link
             to="/login"
             className="text-white flex items-center hover:text-pink-500 hover:scale-110 transition-transform duration-300"
@@ -254,8 +258,7 @@ const HomePage = () => {
       <div data-aos="fade-up" ref={enquiryFormRef} className="mt-16">
         <EnquiryForm />
       </div>
-      {/* <div className=" absolute right-0 w-96">
-     <img src={color1} alt="" /></div> */}
+     
 
       {/* Customer Feedback Carousel */}
       <div className="mt-16" data-aos="zoom-in">

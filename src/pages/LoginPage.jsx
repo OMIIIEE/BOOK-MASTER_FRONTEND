@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { Container, Row, Col, Form, FormGroup, Button } from "reactstrap";
 import bgimage from "../assets/loginbg.jpg";
 import { MoveLeft } from "lucide-react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Login = () => {
   const [user, setUser] = useState({
@@ -13,6 +15,10 @@ const Login = () => {
 
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
+
+  useEffect(() => {
+    AOS.init({ duration: 1600 });
+  }, []);
 
   const validateEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -100,8 +106,8 @@ const Login = () => {
           </button>
         </Link>
       </div>
-      <section className="flex justify-center items-center mt-24">
-        <Container className="flex justify-center items-center w-full">
+      <section className="flex justify-center items-center mt-24" data-aos="fade-up">
+        <Container className="flex justify-center items-center w-full" >
           <Row>
             <Col lg="8" className="m-auto h-full">
               <div className=" flex shadow-2xl h-[60vh] w-[30vw] backdrop-blur-sm bg-white bg-opacity-20  rounded-lg">

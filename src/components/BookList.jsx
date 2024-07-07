@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import { Card, CardBody } from "reactstrap";
 import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
 import axios from "axios";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const BookList = ({
   books,
@@ -22,6 +24,11 @@ const BookList = ({
     state: "",
     postalCode: "",
   });
+
+  useEffect(() => {
+    AOS.init({ duration: 1200 });
+  }, []);
+
 
   const openBookDetails = (book) => {
     setSelectedBook(book);
@@ -175,9 +182,9 @@ const BookList = ({
         </Card>
       ))}
       {selectedBook && showViewMoreModal && (
-        <div className="fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-3/5">
-            <div className="mb-4">
+        <div className="fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 flex justify-center items-center z-50" >
+          <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-3/5" data-aos="fade-up">
+            <div className="mb-4" >
               <h2 className="text-3xl mb-2 font-abril text-purple-600">{selectedBook.name}</h2>
               <div className="flex items-center justify-center gap-4">
                 <div>
@@ -225,8 +232,8 @@ const BookList = ({
       )}
 
       {selectedBook && showBuyModal && (
-        <div className="fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 flex justify-center items-center z-50 mt-8">
-          <div className="bg-white p-6 rounded-lg max-w-md w-1/3 flex flex-col justify-center items-center shadow-lg">
+        <div className="fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 flex justify-center items-center z-50 mt-8" >
+          <div className="bg-white p-6 rounded-lg max-w-md w-1/3 flex flex-col justify-center items-center shadow-lg" data-aos="fade-up">
             <h2 className="text-3xl  mb-4 font-abril text-purple-500">
               {selectedBook.name}
             </h2>

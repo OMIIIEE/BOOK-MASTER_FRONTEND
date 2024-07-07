@@ -13,6 +13,9 @@ import {
   ModalBody,
   ModalHeader,
 } from "reactstrap";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 
 const Register = () => {
   const [user, setUser] = useState({
@@ -26,6 +29,10 @@ const Register = () => {
 
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
+
+  useEffect(() => {
+    AOS.init({ duration: 1600 });
+  }, []);
 
   const [formValid, setFormValid] = useState(false); // New state variable
 
@@ -192,7 +199,7 @@ const Register = () => {
     <div className="w-full items-center justify-center" style={{ backgroundImage: `url(${bgimage})`, backgroundSize: 'cover', backgroundAttachment: 'fixed' }}>
     <section className="flex justify-center items-center h-screen p-12">
       <div className="container mx-auto flex justify-center items-center w-full">
-        <div className="flex shadow-2xl h-auto w-[30vw] backdrop-blur-sm bg-white bg-opacity-30 rounded-lg">
+        <div className="flex shadow-2xl h-auto w-[30vw] backdrop-blur-sm bg-white bg-opacity-30 rounded-lg" data-aos="fade-up">
           <div className="login_form p-8 relative w-full flex flex-col justify-center shadow-lg rounded-lg">
             <h2 className="text-center font-medium antialiased mb-4 text-6xl text-[#0D014D] font-comforter">
               Register
@@ -279,7 +286,7 @@ const Register = () => {
             </Form>
             <p className="text-black text-center mt-4">
               Already have an account?
-              <Link to="/login" className="text-lg font-semibold text-[#0D014D]">
+              <Link to="/login" className="text-lg font-pacifico text-[#0D014D]">
                 Login
               </Link>
             </p>

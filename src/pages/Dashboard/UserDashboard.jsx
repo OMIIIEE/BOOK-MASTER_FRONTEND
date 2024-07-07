@@ -140,7 +140,7 @@ const UserDashboard = () => {
 
   return (
     <div
-      className="flex flex-col min-h-screen bg-#0D0B26 bg-opacity-900"
+      className="flex flex-col min-h-screen bg-#0D0B26 bg-opacity-900" 
       style={{
         // backgroundImage: `url(${backgroundImage})`,
         backgroundImage: `url('https://sbmweb.com/wp-content/uploads/2019/07/sbm-dark-background.jpg')`,
@@ -150,14 +150,14 @@ const UserDashboard = () => {
       }}
     >
       <div className="flex flex-grow">
-        <div className="flex flex-col flex-grow" data-aos="fade-down">
+        <div className="flex flex-col flex-grow" >
           <NavbarUser
             wishlistCount={wishlist.length}
             onAddBookClick={handleAddBookClick}
             user={user}
           />
           <div className="flex flex-col    ">
-            <div >
+            <div data-aos="fade-right">
               <Carousel className="w-[1400px]" />
             </div>
             <div className="container mx-auto px-4 py-1 flex-grow mt-8 w-full" >
@@ -178,7 +178,7 @@ const UserDashboard = () => {
                 />
               )}
             </div>
-            <div className="w-[1450px] " data-aos="zoom-in">
+            <div className="w-[1450px] " >
               <AuthorsCarousel />
             </div>
        
