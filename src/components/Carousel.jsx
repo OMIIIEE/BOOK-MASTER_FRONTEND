@@ -4,6 +4,8 @@ import img2 from '../assets/carousel/a4.jpg';
 import img3 from '../assets/carousel/a6.jpg';
 import img4 from '../assets/carousel/a2.png';
 import img1 from '../assets/carousel/Desktop.png';
+import img5 from '../assets/carousel/a5.png';
+import img6 from '../assets/carousel/a7.webp';
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -58,7 +60,7 @@ const Carousel = () => {
             ref={(el) => (slidesRef.current[index] = el)}
             className={`item absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'}` } 
           >
-            <img src={slide.img} alt="" className="w-full h-full object-fit z-10 " />
+            <img src={slide.img} alt="" className="w-full h-full object-cover center z-10 m-auto " />
             <div className="content flex flex-col justify-center absolute top-1/2 left-0 transform -translate-y-1/2 text-white shadow-lg p-4 bg-black bg-opacity-70 rounded-r-full h-[80vh] w-1/3 z-20" data-aos="" >
               <div className="title text-5xl leading-tight font-abril" data-aos="fade-up">{slide.title}</div>
               <div className="topic text-5xl leading-tight text-orange-500 font-abril"  >{slide.topic}</div>
@@ -80,10 +82,10 @@ const Carousel = () => {
         ))}
       </div>
 
-      <div className="arrows absolute top-4/5 right-1/2 transform translate-x-1/2 flex gap-2">
+      {/* <div className="arrows absolute top-4/5 right-1/2 transform translate-x-1/2 flex gap-2">
         <button id="prev" className="w-10 h-10 bg-gray-300 bg-opacity-50 text-white rounded-full" onClick={() => showSlider('prev')}>{'<'}</button>
         <button id="next" className="w-10 h-10 bg-gray-300 bg-opacity-50 text-white rounded-full" onClick={() => showSlider('next')}>{'>'}</button>
-      </div>
+      </div> */}
 
       <div className="time absolute top-0 left-0 w-0 h-1 bg-orange-500"></div>
     </div>
@@ -116,6 +118,18 @@ const slides = [
     topic: 'STORY TIME',
     description: 'Join us for enchanting tales and magical stories.',
   },
+  {
+    img: img5, 
+    title: 'THE BOOK MASTER',
+    topic: 'FICTION',
+    description: 'Discover the most popular books that are capturing the hearts and minds of readers everywhere.'
+  },
+  {
+    img: img6,
+    title: 'THE BOOK MASTER',
+    topic: 'NEW RELEASES',
+  description: 'Explore the latest additions to our collection, from thrilling mysteries to captivating stories.'
+},
 ];
 
 export default Carousel;
