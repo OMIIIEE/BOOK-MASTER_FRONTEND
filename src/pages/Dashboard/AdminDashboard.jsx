@@ -16,6 +16,8 @@ import ChartTopUsers from "../../components/ChartTopUsers";
 import EnquiryList from "../EnquiryList";
 import ChartTopBooks from "../../components/ChartTopBooks";
 import "../../Utils/styles.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const AdminDashboard = () => {
   const [users, setUsers] = useState([]);
@@ -25,6 +27,9 @@ const AdminDashboard = () => {
   const [section, setSection] = useState("home");
   const [showModal, setShowModal] = useState(false);
 
+  useEffect(() => {
+    AOS.init({ duration: 1200 });
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -108,32 +113,32 @@ const AdminDashboard = () => {
             <>
               <div className="text-3xl uppercase tracking-wider">Welcome to Admin Dashboard</div>
               <div></div>
-              <div className="w-1/2 flex items-center gap-16 left-0 justify-center  slide-up">
+              <div className="w-1/2 flex items-center gap-16 left-0 justify-center " data-aos="fade-up">
                 <ChartComponentB />
                 <ChartTopUsers users={users} />
               </div>
-              <div className=" w-full flex items-center gap-16 left-0 justify-center slide-up">
+              <div className=" w-full flex items-center gap-16 left-0 justify-center " data-aos="fade-up">
                 <ChartTopBooks purchases={purchases}/>
               </div>
             </>
           )}
           {section === "userDetails" && (
-            <div className="slide-up -mt-12">
+            <div className=" -mt-12" data-aos="fade-up">
               <UserList users={users} />
             </div>
           )}
           {section === "bookDetails" && (
-            <div className="slide-up -mt-8">
+            <div className=" -mt-8" data-aos="fade-up">
               <BookDetails books={books} setBooks={setBooks} />
             </div>
           )}
           {section === "bookingDetails" && (
-            <div className="slide-up -my-4">
+            <div className=" -my-4" data-aos="fade-up">
               <Booking bookings={getBookingDetails()} />
             </div>
           )}
           {section === "enquiryDetails" && (
-            <div className="slide-up mt-6">
+            <div className=" mt-6" data-aos="fade-up">
               <EnquiryList enquiries={enquiries} setEnquiries={setEnquiries} />
             </div>
           )}

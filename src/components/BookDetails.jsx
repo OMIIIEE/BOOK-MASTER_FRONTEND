@@ -87,7 +87,7 @@ const BookDetails = ({}) => {
         <div>Loading...</div>
       ) : (
         <div className="overflow-x-auto w-[1400px] h-[550px] overflow-y-auto">
-          <table className="min-w-full divide-y divide-gray-200 border border-gray-300 rounded-lg shadow-lg">
+          <table className="min-w-full divide-y divide-gray-200 border border-gray-300  rounded-lg shadow-lg">
             <thead className="bg-gray-100 sticky top-0">
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border border-gray-300">
@@ -116,7 +116,7 @@ const BookDetails = ({}) => {
                 </th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
+            <tbody className="bg-white divide-y divide-gray-200 ">
               {publishers.map((publisher) => {
                 const authorCount = publisher.authors.reduce(
                   (count, author) => count + author.books.length,
@@ -126,9 +126,9 @@ const BookDetails = ({}) => {
                 return (
                   <React.Fragment key={publisher._id}>
                     {publisher.authors.map((author, authorIndex) => (
-                      <React.Fragment key={author._id}>
+                      <React.Fragment key={author._id} >
                         {author.books.map((book, bookIndex) => (
-                          <tr key={book._id}>
+                          <tr key={book._id} >
                             {authorIndex === 0 && bookIndex === 0 && (
                               <td
                                 rowSpan={authorCount}
@@ -231,7 +231,9 @@ const BookDetails = ({}) => {
                 );
               })}
             </tbody>
+            
           </table>
+          
         </div>
       )}
     </div>

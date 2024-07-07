@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import axios from "axios";
 import { Form, FormGroup, Button } from "reactstrap";
 import { X } from "lucide-react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const AddBookForm = ({ isAdmin, closeModal }) => {
   const [book, setBook] = useState({
@@ -15,6 +17,10 @@ const AddBookForm = ({ isAdmin, closeModal }) => {
     summary:"",
     category:"",
   });
+
+  useEffect(() => {
+    AOS.init({ duration: 1700 });
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -65,7 +71,7 @@ const AddBookForm = ({ isAdmin, closeModal }) => {
 
   return (
     <div className="fixed inset-0 bg-opacity-30 backdrop-blur-sm bg-[#5AB2FF] flex flex-col justify-center items-center h-auto overflow-y-auto z-50 -mt-6">
-    <div className="mt-10 flex flex-col gap-2 h-[100vh] ">
+    <div className="mt-10 flex flex-col gap-2 h-[100vh] " data-aos="fade-up">
       <button className="place-self-end" onClick={closeModal}>
         <X size={30} />
       </button>

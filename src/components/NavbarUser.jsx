@@ -11,6 +11,10 @@ import avatar4 from '../assets/avatar4.jpg';
 import avatar5 from '../assets/avatar5.jpg';
 import avatar6 from '../assets/avatar6.jpg';
 import FeedbackForm from './FeedbackForm'; 
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+
 const availableAvatars = [avatar1, avatar2, avatar3, avatar4, avatar5, avatar6];
 
 const NavbarUser = ({ user, wishlistCount, onAddBookClick }) => {
@@ -18,6 +22,11 @@ const NavbarUser = ({ user, wishlistCount, onAddBookClick }) => {
   const [showFeedbackForm, setShowFeedbackForm] = useState(false); // State to toggle feedback form
   const [selectedAvatar, setSelectedAvatar] = useState(user?.avatar || null);
   const navigate = useNavigate();
+  
+  useEffect(() => {
+    AOS.init({ duration: 1200 });
+  }, []);
+
 
   useEffect(() => {
     if (user) {
@@ -150,7 +159,7 @@ const NavbarUser = ({ user, wishlistCount, onAddBookClick }) => {
         )}
         
         {showProfileDropdown && (
-          <div className="absolute top-16 -right-12 bg-white text-black p-4 rounded-lg shadow-lg z-50 w-[250px]">
+          <div className="absolute top-16 -right-12 bg-white text-black p-4 rounded-lg shadow-lg z-50 w-[250px]" data-aos="fade-left">
             <div className="flex flex-col gap-2">
               <div>
                 <strong>User Name :</strong> {user.username}

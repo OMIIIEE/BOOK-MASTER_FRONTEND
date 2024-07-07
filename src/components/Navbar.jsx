@@ -79,7 +79,7 @@
 import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import logo from "../assets/IMAGE2.png";
 import backgroundImage from "../assets/backg.jpg";
@@ -196,13 +196,17 @@ const Navbar = ({ user, role, onAddBookClick, toggleSection, section }) => {
           <FontAwesomeIcon icon={faEnvelope} className="mr-1" />
           ENQUIRIES
         </button>
-        <button
+
+        <div
+          className="relative h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer group hover:text-gray-800 hover:duration-300 hover:ease-linear focus:bg-white hover:bg-white"
           onClick={handleLogout}
-          className="bg-transparent border-0 text-white hover:text-yellow-300 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 tracking-wider"
         >
-          <FontAwesomeIcon icon={faSignOutAlt} className="mr-1" />
-          LOGOUT
-        </button>
+          <FontAwesomeIcon icon={faSignOutAlt} className=" h-6 w-6" />
+
+          <span className="absolute top-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gray-700 text-white text-sm rounded-md px-2 py-1">
+            Logout
+          </span>
+        </div>
       </div>
     </div>
   );
