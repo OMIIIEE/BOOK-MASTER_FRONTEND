@@ -104,12 +104,12 @@ const BookList = ({
               className="h-[38vh] object-cover rounded-t-md z-10 hover:scale-105 transition-transform duration-300"
             />
             <button
-              className="absolute top-[-10px] right-[-10px] z-10"
+              className="absolute top-[-13px] right-[-21px] z-10 border rounded-full p-1 bg-pink-300"
               onClick={() => toggleWishlist(book._id)}
             >
               <FaHeart
                 className={`text-2xl ${
-                  wishlist.includes(book._id) ? "text-red-500 scale-110 transition-transform duration-300" : "text-blue-300"
+                  wishlist.includes(book._id) ? "text-red-500 scale-110 transition-transform duration-300" : "text-white"
                 }`}
               />
             </button>
@@ -205,6 +205,9 @@ const BookList = ({
                     Publisher : {selectedBook.publisherName}
                   </p>
                   <p className="text-gray-700 text-md text-left">
+                    Genre :  {selectedBook.category}
+                  </p>
+                  <p className="text-gray-700 text-md text-left">
                     Copies Available :
                     {selectedBook.copies -
                       (copiesBought[selectedBook._id] || 0)}
@@ -219,7 +222,7 @@ const BookList = ({
               </div>
             </div>
             <div className="mb-4">
-              <p className="text-gray-700">{selectedBook.summary}</p>
+              <p className="text-gray-700 text-justify">{selectedBook.summary}</p>
             </div>
             <button
               className="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600"

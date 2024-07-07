@@ -29,7 +29,7 @@ const Wishlist = ({
   });
 
   useEffect(() => {
-    AOS.init({ duration: 1600 });
+    AOS.init({ duration: 1200 });
   }, []);
 
   useEffect(() => {
@@ -105,7 +105,7 @@ const Wishlist = ({
     setQuantity(parseInt(event.target.value));
   };
   const [quantity, setQuantity] = useState(1);
-  
+
   const handleAddressChange = (e) => {
     const { name, value } = e.target;
     setAddress((prevAddress) => ({
@@ -140,6 +140,7 @@ const Wishlist = ({
             <Card
               key={book._id}
               className="border-none shadow-2xl h-auto w-auto flex flex-col items-center py-4 relative bg-white bg-opacity-30"
+              data-aos="fade-up"
             >
               <button
                 className="absolute top-2 right-2 text-gray-500 hover:text-red-500 rounded-full bg-blue-400"
@@ -206,10 +207,10 @@ const Wishlist = ({
               </CardBody>
             </Card>
           ))}
-           {selectedBook && showViewMoreModal && (
+       {selectedBook && showViewMoreModal && (
         <div className="fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 flex justify-center items-center z-50" >
-          <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-3/5">
-            <div className="mb-4">
+          <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-3/5" data-aos="fade-up">
+            <div className="mb-4" >
               <h2 className="text-3xl mb-2 font-abril text-purple-600">{selectedBook.name}</h2>
               <div className="flex items-center justify-center gap-4">
                 <div>
@@ -230,6 +231,9 @@ const Wishlist = ({
                     Publisher : {selectedBook.publisherName}
                   </p>
                   <p className="text-gray-700 text-md text-left">
+                    Genre :  {selectedBook.category}
+                  </p>
+                  <p className="text-gray-700 text-md text-left">
                     Copies Available :
                     {selectedBook.copies -
                       (copiesBought[selectedBook._id] || 0)}
@@ -244,7 +248,7 @@ const Wishlist = ({
               </div>
             </div>
             <div className="mb-4">
-              <p className="text-gray-700">{selectedBook.summary}</p>
+              <p className="text-gray-700 text-justify">{selectedBook.summary}</p>
             </div>
             <button
               className="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600"
@@ -259,7 +263,7 @@ const Wishlist = ({
 
 {selectedBook && showBuyModal && (
         <div className="fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 flex justify-center items-center z-50 mt-8">
-          <div className="bg-white p-6 rounded-lg max-w-md w-1/3 flex flex-col justify-center items-center shadow-lg">
+          <div className="bg-white p-6 rounded-lg max-w-md w-1/3 flex flex-col justify-center items-center shadow-lg" data-aos="fade-up">
             <h2 className="text-3xl  mb-4 font-abril text-purple-500">
               {selectedBook.name}
             </h2>

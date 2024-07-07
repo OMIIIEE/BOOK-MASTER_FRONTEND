@@ -59,9 +59,9 @@ const Carousel = () => {
             className={`item absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'}` } 
           >
             <img src={slide.img} alt="" className="w-full h-full object-fit z-10 " />
-            <div className="content flex flex-col justify-center absolute top-1/2 left-0 transform -translate-y-1/2 text-white shadow-lg p-4 bg-black bg-opacity-70 rounded-r-full h-[80vh] w-1/3 z-20" >
+            <div className="content flex flex-col justify-center absolute top-1/2 left-0 transform -translate-y-1/2 text-white shadow-lg p-4 bg-black bg-opacity-70 rounded-r-full h-[80vh] w-1/3 z-20" data-aos="" >
               <div className="title text-5xl leading-tight font-abril" data-aos="fade-up">{slide.title}</div>
-              <div className="topic text-5xl leading-tight text-orange-500 font-abril" >{slide.topic}</div>
+              <div className="topic text-5xl leading-tight text-orange-500 font-abril"  >{slide.topic}</div>
               <div className=" mt-4 font-pacifico text-xl"  >{slide.description}</div>
               <div className="buttons mt-4 grid grid-cols-2 gap-2">
                 {location.pathname === '/' && (

@@ -8,7 +8,6 @@ import AddBookForm from "../../components/AddBookForm";
 import ShowBooks from "../../components/ShowBooks";
 import BookDetails from "../../components/BookDetails";
 import Booking from "../../components/Booking";
-import Sidebar from "../../components/SidebarAdmin";
 import Footer from "../../components/Footer";
 import Carousel from "../../components/Carousel";
 import ChartComponent from "../../components/ChartComponent";

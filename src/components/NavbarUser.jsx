@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faHeart, faSignOutAlt, faShoppingCart, faEnvelope, faPhone, faAdjust, faComment } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faHeart, faSignOutAlt, faShoppingCart, faEnvelope, faPhone, faAdjust, faComment, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import logo from '../assets/IMAGE2.png';
 import avatar1 from '../assets/avatar1.jpg';
@@ -117,13 +117,13 @@ const NavbarUser = ({ user, wishlistCount, onAddBookClick }) => {
             Feedback
           </span>
         </div>
-        <div className="relative h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer group hover:text-black hover:bg-white hover:duration-300 hover:ease-linear focus:bg-white" onClick={handleLogout}>
+        {/* <div className="relative h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer group hover:text-black hover:bg-white hover:duration-300 hover:ease-linear focus:bg-white" onClick={handleLogout}>
           <FontAwesomeIcon icon={faSignOutAlt} className="h-6 w-6" />
-          {/* <img src={feedback} alt="" className='bg-white'/> */}
+         
           <span className="absolute top-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gray-700 text-white text-sm rounded-md px-2 py-1">
             Logout
           </span>
-        </div>
+        </div> */}
         {selectedAvatar ? (
           <img
             src={selectedAvatar}
@@ -132,11 +132,20 @@ const NavbarUser = ({ user, wishlistCount, onAddBookClick }) => {
             onClick={handleProfileClick}
           />
         ) : (
-          <FontAwesomeIcon
-            icon={faUser}
-            className="cursor-pointer"
-            onClick={handleProfileClick}
-          />
+          // <FontAwesomeIcon
+          //   icon={faUserCircle}
+          //   className="cursor-pointer h-10 w-7 "
+          //   onClick={handleProfileClick}
+          //   size='64'
+          // />
+          <div className="relative h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer group hover:text-gray-800 hover:duration-300 hover:ease-linear focus:bg-white hover:bg-white"  onClick={handleProfileClick}>
+         
+          <FontAwesomeIcon icon={faUserCircle} className="h-7 w-7" />
+      
+        <span className="absolute top-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gray-700 text-white text-sm rounded-md px-2 py-1">
+          Profile
+        </span>
+      </div>
           
         )}
         

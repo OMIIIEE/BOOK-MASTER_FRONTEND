@@ -3,10 +3,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import NavbarUser from "./NavbarUser";
-import SidebarUser from "./SidebarUser";
 import Footer from "./Footer";
 import { MoveLeft } from "lucide-react";
 import { Link } from "react-router-dom";
+import Loader from '../components/Loader'
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
@@ -15,6 +17,12 @@ const Orders = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize] = useState(5); // Number of orders per page, adjust as needed
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true); 
+
+
+  useEffect(() => {
+    AOS.init({ duration: 1700 });
+  }, []);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -59,9 +67,11 @@ const Orders = () => {
 
         setOrders([...purchases.reverse()]);
         setBooksMap(booksMap);
+        setLoading(false); 
       } catch (error) {
         console.error("Error fetching orders data:", error);
         setError(error.message);
+        setLoading(false); 
       }
     };
 
@@ -97,51 +107,57 @@ const Orders = () => {
       </div>
         <h2 className="mb-4 mt-24 text-3xl md:text-5xl text-[#FDC702] font-comforter text-center">Your Orders</h2>
         {/* {error && <div className="text-red-500 mb-4">{error}</div>} */}
-        <div className="flex flex-col w-3/4">
-          {currentOrders.length > 0 ? (
-            currentOrders.map((order, index) => (
-              <div
-                key={index}
-                className="border rounded-lg p-4 shadow-lg bg-white flex flex-row items-center"
-              >
-                <div className="w-1/3">
-                  <img
-                    src={
-                      booksMap[order.bookId._id]?.imageLink ||
-                      "https://via.placeholder.com/150"
-                    }
-                    alt={booksMap[order.bookId._id]?.name || "Book Image"}
-                    className="h-[40vh] object-fit mb-4 w-[18rem] rounded-lg"
-                  />
+        {loading ? (
+          <Loader />
+        ) : (
+          <div className="flex flex-col w-3/4 min-h-[30vh]" data-aos="fade-right">
+            {currentOrders.length > 0 ? (
+              currentOrders.map((order, index) => (
+                <div
+                  key={index}
+                  className="border rounded-lg p-4 shadow-lg bg-white flex flex-row items-center"
+                >
+                  <div className="w-1/3">
+                    <img
+                      src={
+                        booksMap[order.bookId._id]?.imageLink ||
+                        "https://via.placeholder.com/150"
+                      }
+                      alt={booksMap[order.bookId._id]?.name || "Book Image"}
+                      className="h-[40vh] object-fit mb-4 w-[18rem] rounded-lg"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl text-center h-12 font-abril text-[#00224D] hover:text-[#029D9D] no-underline">
+                      {booksMap[order.bookId._id]?.name || "Unknown Book"}
+                    </h3>
+                    <p className="mb-1">
+                      <strong>Author:</strong>{" "}
+                      {booksMap[order.bookId._id]?.authorName ||
+                        "Unknown Author"}
+                    </p>
+                    <h3 className="mb-1">
+                      <strong>Book Price:</strong>{" "}
+                      {booksMap[order.bookId._id]?.price || "N/A"}
+                    </h3>
+                    <p className="mb-1">
+                      <strong>Quantity:</strong> {order.quantity}
+                    </p>
+                    <p className="mb-1">
+                      <strong>Total Price:</strong> Rs {order.totalPrice}
+                    </p>
+                    <p className="mb-1">
+                      <strong>Order Date:</strong>{" "}
+                      {new Date(order.purchaseDate).toDateString()}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-2xl text-center h-12 font-abril text-[#00224D] hover:text-[#029D9D] no-underline">
-                    {booksMap[order.bookId._id]?.name || "Unknown Book"}
-                  </h3>
-                  <p className="mb-1">
-                    <strong>Author:</strong>{" "}
-                    {booksMap[order.bookId._id]?.authorName || "Unknown Author"}
-                  </p>
-                  <h3 className="mb-1">
-                    <strong>Book Price:</strong> {booksMap[order.bookId._id]?.price || "N/A"}
-                  </h3>
-                  <p className="mb-1">
-                    <strong>Quantity:</strong> {order.quantity}
-                  </p>
-                  <p className="mb-1">
-                    <strong>Total Price:</strong> Rs {order.totalPrice}
-                  </p>
-                  <p className="mb-1">
-                    <strong>Order Date:</strong>{" "}
-                    {new Date(order.purchaseDate).toDateString()}
-                  </p>
-                </div>
-              </div>
-            ))
-          ) : (
-            <p>No orders found.</p>
-          )}
-        </div>
+              ))
+            ) : (
+              <p>No orders found.</p>
+            )}
+          </div>
+        )}
         {/* Pagination controls */}
         {orders.length > pageSize && (
           <ul className="flex justify-center mt-4 space-x-2">

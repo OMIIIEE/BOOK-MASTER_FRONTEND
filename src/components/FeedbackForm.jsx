@@ -86,12 +86,13 @@ const FeedbackForm = ({ onClose }) => {
             ></textarea>
           </div>
           <div className="flex justify-between">
+          <button type="submit" className="bg-purple-500 text-white py-2 px-4 rounded hover:bg-purple-600">
+              Submit
+            </button>
             <button type="button" className="bg-blue-500 text-white py-2 px-4 rounded" onClick={onClose}>
               Cancel
             </button>
-            <button type="submit" className="bg-purple-500 text-white py-2 px-4 rounded hover:bg-purple-600">
-              Submit
-            </button>
+           
           </div>
         </form>
       </div>
