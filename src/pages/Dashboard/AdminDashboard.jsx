@@ -133,7 +133,7 @@ const AdminDashboard = () => {
             </div>
           )}
           {section === "bookingDetails" && (
-            <div className=" -my-4" data-aos="fade-up">
+            <div className=" -my-4 slide-up" >
               <Booking bookings={getBookingDetails()} />
             </div>
           )}
