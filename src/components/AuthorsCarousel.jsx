@@ -5,7 +5,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 const AuthorsCarousel = () => {
-  // Static data for authors
+  // used Static data for authors
   const authors = [
     { id: 1, name: "Jerome K Jerome", image: "https://www.thefamouspeople.com/profiles/images/jerome-k-jerome-4.jpg" },
     { id: 2, name: "J. K. Rowling", image: "https://wallpapercave.com/wp/wp3635868.jpg" },

@@ -5,12 +5,11 @@ const Booking = ({ bookings }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const bookingsPerPage = 8;
 
-  // Calculate current bookings for the current page
   const indexOfLastBooking = currentPage * bookingsPerPage;
   const indexOfFirstBooking = indexOfLastBooking - bookingsPerPage;
   const currentBookings = bookings.slice(indexOfFirstBooking, indexOfLastBooking);
 
-  // Handle page change
+
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };

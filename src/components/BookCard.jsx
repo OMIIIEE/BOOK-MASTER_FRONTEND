@@ -63,23 +63,13 @@ const handleWishlistClick =()=>{
                 </p>
               )}
             </span>
-            {/* <span className="flex items-center text-[#00224D] text-sm">
-              <p>
-                Copies:
-                <strong className="font-semibold"> {book.copies}</strong>
-              </p>
-            </span> */}
+           
             <span className="flex items-center text-[#00224D] text-sm">
               <p>
                 Price: <strong className="font-semibold">Rs {book.price}</strong>
               </p>
             </span>
-{/* 
-            <div className="flex items-center justify-between text-gray-600">
-              <h5 className="text-md font-semibold">
-                Published Date: {new Date(book.publishDate).toDateString()}
-              </h5>
-            </div> */}
+
           </div>
 
           <div className="flex items-center justify-between mt-2 gap-20 bottom-0">

@@ -7,7 +7,7 @@ const ChartTopUsers = ({ users }) => {
 
   useEffect(() => {
     const calculateTopUsers = () => {
-      // Calculate total quantity of books purchased for each user
+      
       const usersWithTotalPurchases = users.map(user => {
         const totalQuantity = user.purchases.reduce((acc, purchase) => acc + purchase.quantity, 0);
         return {
@@ -16,13 +16,12 @@ const ChartTopUsers = ({ users }) => {
         };
       });
 
-      // Sorting users by total quantity in descending order
       usersWithTotalPurchases.sort((a, b) => b.totalQuantity - a.totalQuantity);
 
-      // Take top 5 users with maximum total quantity
+     
       const topUsers = usersWithTotalPurchases.slice(0, 5);
 
-      // Prepare data for chart
+      
       const labels = topUsers.map(user => user.username);
       const data = topUsers.map(user => user.totalQuantity);
 
@@ -32,7 +31,7 @@ const ChartTopUsers = ({ users }) => {
           {
             label: 'Top Users with Maximum Books Purchased',
             data: data,
-            backgroundColor: 'rgba(54, 162, 235, 0.7)', // Example color
+            backgroundColor: 'rgba(54, 162, 235, 0.7)', 
           },
         ],
       };
@@ -87,13 +86,13 @@ const ChartTopUsers = ({ users }) => {
 
     calculateTopUsers();
 
-    // Clean up on component unmount
+   
     return () => {
       if (chartInstanceRef.current) {
         chartInstanceRef.current.destroy();
       }
     };
-  }, [users]); // Watch for changes in users prop
+  }, [users]); 
 
   return <canvas ref={chartRef} />;
 };

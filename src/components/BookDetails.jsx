@@ -32,10 +32,10 @@ const BookDetails = ({}) => {
 
   const handleSaveEdit = async () => {
     try {
-      // Update the book in the backend
+      // Updating the book details in the backend
       await axios.put(`https://book-master-backend-new-1.onrender.com/api/auth/books/${editedBook._id}`, editedBook);
       
-      // Update the book in the frontend
+      // Updating the book details in the frontend
       const updatedPublishers = publishers.map(publisher => ({
         ...publisher,
         authors: publisher.authors.map(author => ({
@@ -45,7 +45,7 @@ const BookDetails = ({}) => {
       }));
       setPublishers(updatedPublishers);
       
-      // Clear edit mode
+      
       setEditingBookId(null);
       setEditedBook({});
     } catch (error) {

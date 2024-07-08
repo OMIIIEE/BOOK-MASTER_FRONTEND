@@ -15,7 +15,7 @@ const Orders = () => {
   const [booksMap, setBooksMap] = useState({});
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize] = useState(5); // Number of orders per page, adjust as needed
+  const [pageSize] = useState(5); 
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true); 
 
@@ -46,7 +46,6 @@ const Orders = () => {
         if (!user) return;
         const token = localStorage.getItem("token");
 
-        // Fetch purchases for the current user
         const ordersRes = await axios.get(`https://book-master-backend-new-1.onrender.com/api/purchases/${user._id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
@@ -54,7 +53,7 @@ const Orders = () => {
         console.log("Fetched orders data:", ordersRes.data);
         const purchases = ordersRes.data || [];
 
-        // Create a mapping of bookId to book details for faster lookup
+      
         const booksMap = {};
         purchases.forEach((purchase) => {
           booksMap[purchase.bookId._id] = {
@@ -80,18 +79,18 @@ const Orders = () => {
     }
   }, [user]);
 
-  // Pagination logic
+  
   const indexOfLastOrder = currentPage * pageSize;
   const indexOfFirstOrder = indexOfLastOrder - pageSize;
   const currentOrders = orders.slice(indexOfFirstOrder, indexOfLastOrder);
 
-  // Change page
+
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div className="w-full">
     
-      {/* <SidebarUser user={user}/> */}
+  
       <NavbarUser user={user} />
       <div className="w-full flex flex-col items-center justify-center mb-8">
         
@@ -106,7 +105,7 @@ const Orders = () => {
         </Link>
       </div>
         <h2 className="mb-4 mt-24 text-3xl md:text-5xl text-[#FDC702] font-comforter text-center">Your Orders</h2>
-        {/* {error && <div className="text-red-500 mb-4">{error}</div>} */}
+    
         {loading ? (
           <Loader />
         ) : (
@@ -158,7 +157,7 @@ const Orders = () => {
             )}
           </div>
         )}
-        {/* Pagination controls */}
+       
         {orders.length > pageSize && (
           <ul className="flex justify-center mt-4 space-x-2">
             {Array.from({ length: Math.ceil(orders.length / pageSize) }).map(

@@ -23,14 +23,14 @@ const ChartTopBooks = ({ purchases }) => {
         }
       });
 
-      // Convert the map to an array and sort by quantity in descending order
+
       const booksArray = Array.from(bookMap.values());
       booksArray.sort((a, b) => b.quantity - a.quantity);
 
-      // Take top 10 books with maximum quantity
+      
       const topBooks = booksArray.slice(0, 10);
 
-      // Prepare data for chart
+     
       const labels = topBooks.map(book => book.name);
       const data = topBooks.map(book => book.quantity);
 
@@ -40,7 +40,7 @@ const ChartTopBooks = ({ purchases }) => {
           {
             label: 'Top 10 Books Purchased',
             data: data,
-            backgroundColor: 'rgba(75, 192, 192, 0.7)', // Example color
+            backgroundColor: 'rgba(75, 192, 192, 0.7)', 
           },
         ],
       };
@@ -97,7 +97,7 @@ const ChartTopBooks = ({ purchases }) => {
       calculateTopBooks();
     }
 
-    // Clean up on component unmount
+   
     return () => {
       if (chartInstanceRef.current) {
         chartInstanceRef.current.destroy();

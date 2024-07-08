@@ -8,7 +8,6 @@ import UserDashboard from "./pages/Dashboard/UserDashboard";
 import AddBookForm from "./components/AddBookForm";
 import Wishlist from "./pages/Wishlist";
 import axios from "axios";
-// import { WishlistProvider } from "./ContextAPI/WishlistContext";
 import BookDetails from "./components/BookDetails";
 import Orders from "./components/Orders";
 import HomePage from "./pages/HomePage";
@@ -17,7 +16,7 @@ import OtpVerification from "./pages/OtpVerification"
 function App() {
   return (
     <>
-     {/* <WishlistProvider> */}
+     
       <Router>
         <Routes>
          
@@ -34,7 +33,7 @@ function App() {
           
         </Routes>
       </Router>
-      {/* </WishlistProvider> */}
+      
     </>
   );
 }

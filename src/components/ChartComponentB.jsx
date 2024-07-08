@@ -15,7 +15,6 @@ const ChartComponentB = () => {
         const response = await axios.get('https://book-master-backend-new-1.onrender.com/api/auth/books/book');
         const books = response.data.books;
 
-        // Calculate total books per category
         const categories = {};
         books.forEach(book => {
           const category = book.category;
@@ -26,7 +25,7 @@ const ChartComponentB = () => {
           }
         });
 
-        // Prepare data for chart
+       
         const chartData = {
           labels: Object.keys(categories),
           datasets: [
@@ -94,7 +93,7 @@ const ChartComponentB = () => {
 
     fetchChartData();
 
-    // Clean up on component unmount
+   
     return () => {
       if (chartInstanceRef.current) {
         chartInstanceRef.current.destroy();

@@ -3,6 +3,15 @@ export default {
   content: ["./src/**/*.{html,js,jsx}"],
   theme: {
     extend: {
+      keyframes: {
+        spin: {
+          '0%, 100%': { transform: 'rotate(360deg)' },
+          '0%': { transform: 'rotate(0deg)' },
+        },
+      },
+      animation: {
+        spin: 'spin 1s linear infinite',
+      },
       colors: {
         'custom-blue': '#5AB2FF',
       },

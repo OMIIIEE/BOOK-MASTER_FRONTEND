@@ -42,7 +42,6 @@ const Carousel = () => {
 
     clearTimeout(runTimeoutRef.current);
     runTimeoutRef.current = setTimeout(() => {
-      // reset animations if any
     }, timeRunning);
 
     clearTimeout(autoNextTimeoutRef.current);

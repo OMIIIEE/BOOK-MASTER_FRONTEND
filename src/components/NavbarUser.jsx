@@ -19,7 +19,7 @@ const availableAvatars = [avatar1, avatar2, avatar3, avatar4, avatar5, avatar6];
 
 const NavbarUser = ({ user, wishlistCount, onAddBookClick }) => {
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
-  const [showFeedbackForm, setShowFeedbackForm] = useState(false); // State to toggle feedback form
+  const [showFeedbackForm, setShowFeedbackForm] = useState(false);
   const [selectedAvatar, setSelectedAvatar] = useState(user?.avatar || null);
   const navigate = useNavigate();
   
@@ -121,18 +121,12 @@ const NavbarUser = ({ user, wishlistCount, onAddBookClick }) => {
         </Link>
         <div className="relative h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer group hover:text-black hover:bg-white hover:duration-300 hover:ease-linear focus:bg-white" onClick={() => setShowFeedbackForm(true)}>
           <FontAwesomeIcon icon={faComment} className="h-6 w-6" />
-          {/* <img src={feedback} alt="" className='bg-white'/> */}
+         
           <span className="absolute top-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gray-700 text-white text-sm rounded-md px-2 py-1">
             Feedback
           </span>
         </div>
-        {/* <div className="relative h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer group hover:text-black hover:bg-white hover:duration-300 hover:ease-linear focus:bg-white" onClick={handleLogout}>
-          <FontAwesomeIcon icon={faSignOutAlt} className="h-6 w-6" />
-         
-          <span className="absolute top-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gray-700 text-white text-sm rounded-md px-2 py-1">
-            Logout
-          </span>
-        </div> */}
+       
         {selectedAvatar ? (
           <img
             src={selectedAvatar}

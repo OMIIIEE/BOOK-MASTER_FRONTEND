@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { Container, Row, Col, Form, FormGroup, Button } from "reactstrap";
-// import Navbar from "../Home/Navbar";
 
-// import Footer from "../Home/Footer";
 
 const OtpVerification = () => {
   const [otp, setOtp] = useState("");

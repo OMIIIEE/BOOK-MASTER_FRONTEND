@@ -17,7 +17,7 @@ const BookList = ({
   const [copiesBought, setCopiesBought] = useState({});
   const [showViewMoreModal, setShowViewMoreModal] = useState(false);
   const [showBuyModal, setShowBuyModal] = useState(false);
-  const [quantity, setQuantity] = useState(1); // Default quantity to buy
+  const [quantity, setQuantity] = useState(1); 
   const [address, setAddress] = useState({
     street: "",
     city: "",
@@ -32,7 +32,7 @@ const BookList = ({
 
   const openBookDetails = (book) => {
     setSelectedBook(book);
-    setShowViewMoreModal(true); // Show View More modal when book details are opened
+    setShowViewMoreModal(true); 
   };
 
   const closeBookDetails = () => {
@@ -46,7 +46,7 @@ const BookList = ({
 
   const handleBuyClick = (bookId) => {
     setSelectedBook(books.find((book) => book._id === bookId));
-    setShowBuyModal(true); // Show Buy modal when Buy button is clicked
+    setShowBuyModal(true); 
   };
 
   const handleConfirmBuy = async () => {
@@ -69,12 +69,12 @@ const BookList = ({
         ...copiesBought,
         [selectedBook._id]: (copiesBought[selectedBook._id] || 0) + quantity,
       });
-      setShowBuyModal(false); // Close Buy modal after successful purchase
-      setQuantity(1); // Reset quantity after purchase
-      setAddress({ street: "", city: "", state: "", postalCode: "" }); // Reset address after purchase
+      setShowBuyModal(false);
+      setQuantity(1);
+      setAddress({ street: "", city: "", state: "", postalCode: "" });
     } catch (error) {
       console.error("Error purchasing book:", error);
-      // Handle error
+      
     }
   };
 
@@ -151,16 +151,11 @@ const BookList = ({
                 </span>
                 <span className="flex items-center text-[#00224D] text-sm">
                   <p>
-                    Price :{" "}
+                    Price :
                     <strong className="font-semibold">Rs {book.price} </strong>
                   </p>
                 </span>
 
-                {/* <div className="flex items-center justify-between text-gray-600">
-                  <h5 className="text-md font-semibold">
-                    Published Date : {new Date(book.publishDate).toDateString()}
-                  </h5>
-                </div> */}
               </div>
 
               <div className="flex items-center justify-between mt-2 gap-20 bottom-0">

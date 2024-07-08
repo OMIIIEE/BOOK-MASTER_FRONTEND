@@ -161,9 +161,7 @@ const Register = () => {
   };
 
   useEffect(() => {
-    // Check if there are any errors
     const isValid = Object.values(errors).every((error) => error === "");
-    // Update form validity state
     setFormValid(isValid);
   }, [errors]);
 
@@ -189,7 +187,6 @@ const Register = () => {
         
       }
     } catch (err) {
-      // console.error(err);
       alert("Registration failed. Please try again.");
     }
     }

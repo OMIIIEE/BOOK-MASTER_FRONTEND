@@ -4,20 +4,19 @@ import Pagination from '../components/Pagination';
 
 const BooksSection = ({ books, filteredBooks, wishlist, toggleWishlist, error }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [booksPerPage] = useState(8); // Number of books per page
+  const [booksPerPage] = useState(8); 
 
-  // Get current books
+
   const indexOfLastBook = currentPage * booksPerPage;
   const indexOfFirstBook = indexOfLastBook - booksPerPage;
   const currentBooks = filteredBooks.slice(indexOfFirstBook, indexOfLastBook);
 
-  // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   const nextPage = () => setCurrentPage(prevPage => Math.min(prevPage + 1, Math.ceil(filteredBooks.length / booksPerPage)));
   const prevPage = () => setCurrentPage(prevPage => Math.max(prevPage - 1, 1));
 
   useEffect(() => {
-    setCurrentPage(1); // Reset to first page on category change
+    setCurrentPage(1); 
   }, [filteredBooks]);
 
   return (

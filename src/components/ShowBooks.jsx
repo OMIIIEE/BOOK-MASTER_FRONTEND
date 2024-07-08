@@ -9,20 +9,18 @@ const ShowBooks = ({ books, wishlist, onToggleWishlist, user, categorisedBooks }
   const [filteredBooks, setFilteredBooks] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
 
-  // Total pages for pagination
+ 
   const totalPages = Math.ceil(filteredBooks.length / booksPerPage);
 
-  // Handle search input change
   const handleSearchInputChange = (query) => {
     setSearchQuery(query);
   };
 
-  // Handle category change
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
   };
 
-  // Filter books based on search query and selected category
+  
   useEffect(() => {
     let filteredData = books;
     if (searchQuery.trim() !== "") {
@@ -44,32 +42,29 @@ const ShowBooks = ({ books, wishlist, onToggleWishlist, user, categorisedBooks }
     }
 
     setFilteredBooks(filteredData);
-    setCurrentPage(1); // Reset to first page after filtering
+    setCurrentPage(1); 
   }, [books, searchQuery, selectedCategory]);
 
-  // Get current books for pagination
   const indexOfLastBook = currentPage * booksPerPage;
   const indexOfFirstBook = indexOfLastBook - booksPerPage;
   const currentBooks = filteredBooks.slice(indexOfFirstBook, indexOfLastBook);
 
-  // Handle pagination change
+
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  // Function to handle previous page
+ 
   const prevPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
     }
   };
 
-  // Function to handle next page
   const nextPage = () => {
     if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
     }
   };
 
-  // Get unique categories
   const uniqueCategories = ["All Categories", ...new Set(books.map((book) => book.category).filter(Boolean))];
 
   return (
