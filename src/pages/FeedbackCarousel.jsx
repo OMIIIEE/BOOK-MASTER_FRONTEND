@@ -4,6 +4,7 @@ import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import axios from 'axios';
 import StarRating from '../components/StarRating';
+import Loader from '../components/Loader';
 
 const FeedbackCarousel = () => {
   const [testimonials, setTestimonials] = useState([]);
@@ -30,7 +31,9 @@ const FeedbackCarousel = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className='left-0 flex text-white items-center gap-2 '>
+    <Loader/>Loading...
+  </div>;
   }
 
   if (error) {
